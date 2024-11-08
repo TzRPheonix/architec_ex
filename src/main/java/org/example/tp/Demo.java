@@ -6,13 +6,12 @@ public class Demo {
         NotificationSender smsSender = new SMSSender();
         NotificationSender pushSender = new PushSender();
 
-        Message alertViaEmail = new Message.AlertMessage(emailSender);
-        alertViaEmail.sendMessage();
+        Message alertMessage = new AlertMessage(emailSender);
+        Message notificationMessage = new PromotionMessage(smsSender);
+        Message infoMessage = new InfoMessage(pushSender);
 
-        Message promoViaSMS = new Message.PromotionMessage(smsSender);
-        promoViaSMS.sendMessage();
-
-        Message infoViaPush = new Message.InfoMessage(pushSender);
-        infoViaPush.sendMessage();
+        alertMessage.sendMessage();
+        notificationMessage.sendMessage();
+        infoMessage.sendMessage();
     }
-}
+}   
